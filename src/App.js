@@ -97,12 +97,14 @@ const App = () => {
           <NavDiv>
             <StyledA href="/">Home</StyledA>
             <StyledA href="/help">Help</StyledA>
+            <StyledA href="/pizzatime">Pizza?</StyledA>
           </NavDiv>
         </StyledNav>
       </header>
-
-      <Route path='/pizzatime' component={PizzaTime}></Route>
-      <Route path='/' component={Home}></Route>
+      <Switch>
+        <Route path='/pizzatime' component={PizzaTime}></Route>
+        <Route path='/' component={Home}></Route>
+      </Switch>
     </>
   );
 };
