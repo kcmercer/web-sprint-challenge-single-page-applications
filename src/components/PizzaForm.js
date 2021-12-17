@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import * as yup from 'yup';
+import formSchema from '../validation/validpizza';
+import axios from 'axios';
 
 const StyledDiv = styled.div`
  display: flex;
@@ -52,11 +55,30 @@ const initialFormValues = {
     Extra_Cheese: false,
     special: '',
 }
+
+const initialFormErrors = {
+    name: ''
+}
+
+const initialPizza = [];
+
 export default function PizzaTime() {
 
-    const [formValues, setFormValues] = useState(initialFormValues)
+    const [ pizza, setPizza] = useState(initialPizza);
+    const [formValues, setFormValues] = useState(initialFormValues);
+    const [ formErrors, setFormErrors ] = useState(initialFormErrors);
+
+    const postNewPizza = newPizza => {
+        axios.post('https://reqres.in/api/orders', newPizza)
+            .then(resp => {
+                console.log(resp.data)
+                setPizza([resp.data, ...pizza]);
+            }).catch(error => console.error(error))
+            .finally(() => setFormValues(initialFormValues))
+    }
 
     const inputChange = (name, value) => {
+        // validate(name, value);
         setFormValues({
           ...formValues,
           [name]: value
@@ -90,12 +112,19 @@ export default function PizzaTime() {
             Extra_Cheese: formValues.Extra_Cheese,
             special: formValues.special,
         }
-        return console.log(newPizza);
+        postNewPizza(newPizza);
     }
     const onSubmit = event => {
         event.preventDefault()
         submit()
     }
+
+    // const validate = (name, value) => {
+    //     yup.reach(formSchema, name)
+    //         .validate(value)
+    //         .then(() => setFormErrors({...formErrors, [name]: ''}))
+    //         .catch(error => setFormErrors({...formErrors, [name]: error.errors[0]}))
+    // }
 
     return (
         <form id='pizza-form' onSubmit={onSubmit}>
@@ -307,6 +336,9 @@ export default function PizzaTime() {
             </StyledDiv>
 
             <StyledDiv>
+                <div id='errors'>
+                    <div>{formErrors.name}</div>
+                </div>
                 <button id='order-button'> Add to Order </button>
             </StyledDiv>
         </form>

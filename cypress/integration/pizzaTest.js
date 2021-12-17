@@ -23,4 +23,31 @@ describe('Pizza App', () => {
         checkBox2().should('exist');
         checkBox3().should('exist');
     })
+
+    describe('MVP tests', () => {
+        it('mvp tests', () => {
+
+        textInput()
+            .should('have.value','')
+            .type('Kenneth')
+
+        checkBox1()
+            .should('not.be.checked')
+            .check()
+            .should('be.checked')
+
+        checkBox2()
+            .should('not.be.checked')
+            .check()
+            .should('be.checked')
+
+        checkBox3()
+            .should('not.be.checked')
+            .check()
+            .should('be.checked')
+
+        orderButton()
+            .click()
+        })
+    })
 })

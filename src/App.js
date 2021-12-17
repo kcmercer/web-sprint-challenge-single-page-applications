@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import PizzaTime from './components/PizzaForm';
 import Home from './components/Landing';
 
@@ -34,12 +34,12 @@ const App = () => {
           <NavDiv>
             <StyledA href="/">Home</StyledA>
             <StyledA href="/help">Help</StyledA>
-            <StyledA href="/pizzatime">Pizza?</StyledA>
+            <Link id='order-pizza' to="/pizza">Pizza?</Link>
           </NavDiv>
         </StyledNav>
       </header>
       <Switch>
-        <Route path='/pizzatime' component={PizzaTime}></Route>
+        <Route path='/pizza' component={PizzaTime}></Route>
         <Route path='/' component={Home}></Route>
       </Switch>
     </>
