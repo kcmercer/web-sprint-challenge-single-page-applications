@@ -77,6 +77,13 @@ export default function PizzaTime() {
             .finally(() => setFormValues(initialFormValues))
     }
 
+    //     const validate = (name, value) => {
+    //     yup.reach(formSchema, name)
+    //         .validate(value)
+    //         .then(() => setFormErrors({...formErrors, [name]: ''}))
+    //         .catch(error => setFormErrors({...formErrors, [name]: error.errors[0]}))
+    // }
+
     const inputChange = (name, value) => {
         // validate(name, value);
         setFormValues({
@@ -118,13 +125,6 @@ export default function PizzaTime() {
         event.preventDefault()
         submit()
     }
-
-    // const validate = (name, value) => {
-    //     yup.reach(formSchema, name)
-    //         .validate(value)
-    //         .then(() => setFormErrors({...formErrors, [name]: ''}))
-    //         .catch(error => setFormErrors({...formErrors, [name]: error.errors[0]}))
-    // }
 
     return (
         <form id='pizza-form' onSubmit={onSubmit}>
@@ -186,6 +186,7 @@ export default function PizzaTime() {
                     />
                 </label>
             </StyledDiv>
+
             <StyledCheckbox>
             <StyledH4>Add Topings</StyledH4>
                 <label> Pepperoni
