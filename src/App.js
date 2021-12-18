@@ -4,19 +4,23 @@ import { Switch, Route, Link } from 'react-router-dom';
 import PizzaTime from './components/PizzaForm';
 import Home from './components/Landing';
 
+// Styling
 const StyledNav = styled.nav`
  display: flex;
  width: 100%;
 `
+
 const StyledH1 = styled.h1`
   padding-left: 2%;
 `
+
 const StyledA = styled.a`
   border: 1px solid black;
   padding: 1% 3% 1% 3%;
   text-decoration: none;
   background-color: white;
 `
+
 const NavDiv = styled.div`
   display: flex;
   width: 80%;
@@ -24,7 +28,7 @@ const NavDiv = styled.div`
   align-items: center;
   justify-content: flex-end;
 `
-
+// Entire App rendering
 const App = () => {
   return (
     <>

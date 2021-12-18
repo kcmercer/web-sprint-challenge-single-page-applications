@@ -2,6 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 import pizzabkg from '../assets/pizzabkg.jpg';
 
+
+// Styling
 const MidDiv = styled.div`
  background-image: url(${pizzabkg});
  background-size: cover;
@@ -62,7 +64,7 @@ const StyledImg = styled.img`
 `
 
 
-
+//Home Page Rendering
 export default function Home() {
 
 return (

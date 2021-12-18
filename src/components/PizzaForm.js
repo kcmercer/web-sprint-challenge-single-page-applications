@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import formSchema from '../validation/validpizza';
 import axios from 'axios';
 
+// Styling
 const StyledDiv = styled.div`
  display: flex;
  flex-wrap: wrap;
@@ -34,7 +35,7 @@ const StyledH4 = styled.h2`
  width: 100%;
 `
 
-
+// Initial Objects
 const initialFormValues = {
     name: '',
     size: '',
@@ -62,6 +63,7 @@ const initialFormErrors = {
 
 const initialPizza = [];
 
+// Pizza Form Render
 export default function PizzaTime() {
 
     const [ pizza, setPizza] = useState(initialPizza);
