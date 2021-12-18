@@ -85,7 +85,6 @@ export default function PizzaTime() {
     }
 
     const inputChange = (name, value) => {
-        validate(name, value);
         setFormValues({
           ...formValues,
           [name]: value
@@ -97,6 +96,20 @@ export default function PizzaTime() {
         const valueToUse = type === 'checkbox' ? checked: value;
         inputChange(name, valueToUse)
     }
+
+    const onValidChange = event => {
+        const { name, value, checked, type } = event.target
+        const valueToUse = type === 'checkbox' ? checked: value;
+        inputValidChange(name, valueToUse)
+    }
+
+    const inputValidChange = (name, value) => {
+        validate(name, value);
+        setFormValues({
+          ...formValues,
+          [name]: value
+        })
+      }
 
     const submit = () => {
         const newPizza = {
@@ -322,7 +335,7 @@ export default function PizzaTime() {
                     type='text'
                     name='name'
                     value={formValues.name}
-                    onChange={onChange}
+                    onChange={onValidChange}
                 />
             </StyledDiv>
             
