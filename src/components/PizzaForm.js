@@ -77,15 +77,15 @@ export default function PizzaTime() {
             .finally(() => setFormValues(initialFormValues))
     }
 
-    //     const validate = (name, value) => {
-    //     yup.reach(formSchema, name)
-    //         .validate(value)
-    //         .then(() => setFormErrors({...formErrors, [name]: ''}))
-    //         .catch(error => setFormErrors({...formErrors, [name]: error.errors[0]}))
-    // }
+        const validate = (name, value) => {
+        yup.reach(formSchema, name)
+            .validate(value)
+            .then(() => setFormErrors({...formErrors, [name]: ''}))
+            .catch(error => setFormErrors({...formErrors, [name]: error.errors[0]}))
+    }
 
     const inputChange = (name, value) => {
-        // validate(name, value);
+        validate(name, value);
         setFormValues({
           ...formValues,
           [name]: value
